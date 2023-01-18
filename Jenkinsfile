@@ -11,9 +11,26 @@ pipeline {
         }
         stage('e2e Tests') {
             steps {
-                bat 'npm run cy:execution'
+                script {
+                    try{
+                        bat 'npm run cy:execution-allure'
+                        bat 'npm run allure:report'
+                    } finally{
+                        publishReport();
+                    }
+                }
             }
         }
-
     }
 }
+
+    def publishReport(){
+        publishHTML(target:[
+            reportName: 'Allure Report',
+            reportDir:  'allure-report',
+            reporFiles: 'index.html',
+            keepAll:     true,
+            alwaysLinkToLastBuild: true,
+            allowMissing: false
+        ])
+    }
