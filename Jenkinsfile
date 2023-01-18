@@ -13,7 +13,6 @@ pipeline {
             steps {
                     bat 'npm run cy:execution-allure'
                 }
-            }
         }
         stage('Reports') {
             steps {
