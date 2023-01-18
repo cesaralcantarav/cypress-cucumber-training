@@ -16,7 +16,6 @@ pipeline {
         }
         stage('Reports') {
             steps {
-                bat 'rmdir -r /s /q allure-report'
                 bat 'npm run allure:report'
                 script {
                     allure([
