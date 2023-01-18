@@ -28,7 +28,7 @@ pipeline {
         publishHTML(target:[
             reportName: 'Allure Report',
             reportDir:  'allure-report',
-            reporFiles: 'index.html',
+            reportFiles: 'index.html',
             keepAll:     true,
             alwaysLinkToLastBuild: true,
             allowMissing: false
